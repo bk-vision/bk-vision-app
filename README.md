@@ -1,28 +1,21 @@
 # 项目介绍
+蓝鲸产品体系内，一直以来缺少可视化报表能力，导致有视图浏览和配置需求的用户不得不通过外部产品来实现。除此之外，蓝鲸的许多SaaS也有页面上展示可视化视图能力的需求，如果每个产品都自行开发，则会造成人力损耗，体验方面也难以统一。
+蓝鲸图表平台则可以解决这些痛点，不仅提供直观的页面级可视化配置能力，也能够将已配置的图表和仪表盘分享嵌入至其他蓝鲸SaaS中。
 
 # SDK 使用说明
-bk-vision sdk 分别为纯js-sdk([bk-vision-app](#bk-vision-app))，以及vue组件sdk([bk-vision-vue](#bk-vision-vue)).
-## SDK属性
-| 参数 | 说明                                                                                                          | 类型      | 默认值 |
-|------|-------------------------------------------------------------------------------------------------------------|---------|-----|
-| uid | 分享面板share_uid                                                                                               | String  | ''   |
-| apiPrefix | sdk内ajax请求 api 前缀，比如请求mysql 数据，/api/v1/datasource/query/,:api-prefix ='a',则请求地址为：a/api/v1/datasource/query/ | String  | ''    |
-| timeRange | 面板筛选变量默认时间范围                                                                                                | Array   | ['now/d', 'now/d']   |
-| filter | 面板筛选变量，{name:1,name2:2}，                                                                                    | Object  | {}  |
-| isFullScroll | 默认面板将100%充满容器，工具栏固定，此值为false，整个面板将会在容器内滚动                                                                               | Boolean  | true  |
-| isShowTools | 是否展示面板上的工具栏，值为false是，工具栏将不展示，工具栏的工具展示属性（如：）配置无效                                                                              | Boolean  | true  |
-| isShowRefresh | 是否展示面板上的工具栏，值为false是，工具栏将不展示，工具栏的工具展示属性（如：）配置无效                                                                              | Boolean  | true  |
-| isShowTimeRange |  是否展示时间查询组件                                                                             | Boolean  | true  |
+bk-vision 分别支持vue 组件迁入与 纯js引入
++ 纯js-sdk[bk-vision-app](https://git.woa.com/bkvision/bk-vision-app)
++ 以及vue组件sdk[bk-vision-vue](https://git.woa.com/bkvision/bk-vision-vue).
 
 
 ## bk-vision-app
-纯js-sdk使用。如果vue项目,推荐使用[bk-vision-vue](#bk-vision-vue)
-https://www.npmjs.com/package/bk-vision-app
-### 在项目中使用
+纯js-sdk使用。如果vue项目,推荐使用[bk-vision-vue](https://git.woa.com/bkvision/bk-vision-vue
+
+### 在项目中使用（[暂未发布，请参考内部版@tencent/bk-vision-app](#内部版使用))
 ```javascript
 import 'bk-vision-app'
 import 'bk-vision-app/dist/main.css'
-window.BkVisionSDK.init('#app', '3asJvRctYHb8YMAEpdQz6W');
+window.BkVisionSDK.init('#app', '3asJvRctYHb8YMAEpdQz6W',{apiPrefix:''});
 ```
 ### 在html文件中引入
 ```html
@@ -52,7 +45,24 @@ export default {
 </script>
 
 ```
-###init 函数参数
+### 内部版使用
+内部版为 **@tencent/bk-vision-app**
+
+#### @tencent/bk-vision-app 安装
+参考
+```shell
+tnpm i @tencent/bk-vision-app
+```
+更多参看  https://iwiki.woa.com/pages/viewpage.action?pageId=113585381
+#### 内部版使用
+只是报名增加 **@tencent/**
+```javascript
+import '@tencent/bk-vision-app'
+import '@tencent/bk-vision-app/dist/main.css'
+window.BkVisionSDK.init('#app', '3asJvRctYHb8YMAEpdQz6W');
+```
+
+## init 函数参数
 ```typescript
 export  function init(
   domId: string,
@@ -68,98 +78,6 @@ export  function init(
     apiPrefix: string,
   },
 ){}
-```
-## bk-vision-vue
-https://www.npmjs.com/package/bk-vision-vue
-## 使用
-安装bk-vision
-```bash
-npm install bk-vision-vue
-```
-### 项目中使用
-```vue
-<bk-dashboard 
-  :is-show-tools='true' 
-  :is-show-refresh='true' 
-  :is-show-time-range='true'
-  uid='FwchfLZSsoaBSzjpW7WBa7'
-  api-prefix="http://127.0.0.1:8001/bkvision/"/>
-```
-
-完整案例
-```vue
-<template>
-  <div class="home" style='flex:1;'>
-    <bk-dashboard
-      :is-show-tools='true'
-      :is-show-refresh='true'
-      :is-show-time-range='true'
-      uid='FwchfLZSsoaBSzjpW7WBa7'
-      api-prefix="http://127.0.0.1:8001/bkvision/"/>
-  </div>
-</template>
-
-<script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
-import BkDashboard from 'bk-vision-vue'
-import 'bk-vision-vue/dist/main.css'
-
-@Component({
-  components: {
-    BkDashboard
-  }
-})
-export default class HomeView extends Vue {
-}
-</script>
-
-```
-
-### bk-vision-vue 组件属性 {page=#/props}
-bk-vision-vue 组件属性说明
-```typescript
-export default Vue.extend({
-    name: 'BkDashboard',
-    // components: { GridPanel },
-    props: {
-        uid: {
-            // 分享面板share_uid
-            type: String, default: '', required: true,
-        },
-        apiPrefix: {
-            // sdk内ajax请求 api 前缀，比如请求mysql 数据，/api/v1/datasource/query/,:api-prefix ='a',则请求地址为：a/api/v1/datasource/query/
-            type: String, default: '',
-        },
-        timeRange: {
-            // 面板筛选变量默认时间范围，默认值 ['now/d', 'now/d']
-            type: Array, default: () => DEFAULT_TIME_RANGE,
-        },
-        filter: {
-            // 面板筛选变量默认属性，{a:1,b:2}，会以此key、value覆盖 工具栏上筛选变量
-            type: Object, default: () => ({}),
-        },
-        isFullScroll: {
-            // 默认面板将100%充满容器，工具栏固定，此值为false，整个面板将会在容器内滚动
-            type: Boolean, default: true,
-        },
-        isShowWaterMark: {
-            // 面板图表是否覆盖水印
-            type: Boolean, default: true,
-        },
-        isShowTools: {
-            // 是否展示面板上的工具栏，值为false是，工具栏将不展示，工具栏的工具展示属性（如：）配置无效
-            type: Boolean, default: true,
-        },
-        isShowRefresh: {
-            // 是否展示定时刷新组件
-            type: Boolean, default: true,
-        },
-        isShowTimeRange: {
-            // 是否展示时间查询组件
-            type: Boolean, default: true,
-        },
-    },
-});
 ```
 
 ### bk-vision-vue 查询时间默认值说明 {page=#/timeRange}
@@ -244,10 +162,16 @@ export const SHORTCUTS = [
 
 ```
 
-
-# 开发文档
-[开发指南](README_DEV.md)
-
-# 打包说明
+# SDK属性
+| 参数 | 说明                                                                                                          | 类型      | 默认值 |
+|------|-------------------------------------------------------------------------------------------------------------|---------|-----|
+| uid | 分享面板share_uid                                                                                               | String  | ''   |
+| apiPrefix | sdk内ajax请求 api 前缀，比如请求mysql 数据，/api/v1/datasource/query/,:api-prefix ='a',则请求地址为：a/api/v1/datasource/query/ | String  | ''    |
+| timeRange | 面板筛选变量默认时间范围                                                                                                | Array   | ['now/d', 'now/d']   |
+| filter | 面板筛选变量，{name:1,name2:2}，                                                                                    | Object  | {}  |
+| isFullScroll | 默认面板将100%充满容器，工具栏固定，此值为false，整个面板将会在容器内滚动                                                                               | Boolean  | true  |
+| isShowTools | 是否展示面板上的工具栏，值为false是，工具栏将不展示，工具栏的工具展示属性（如：）配置无效                                                                              | Boolean  | true  |
+| isShowRefresh | 是否展示面板上的工具栏，值为false是，工具栏将不展示，工具栏的工具展示属性（如：）配置无效                                                                              | Boolean  | true  |
+| isShowTimeRange |  是否展示时间查询组件                                                                             | Boolean  | true  |
 
 
