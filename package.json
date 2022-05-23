@@ -1,0 +1,95 @@
+{
+  "name": "bk-vision-app",
+  "version": "1.2.6",
+  "private": false,
+  "description": "bk-vision",
+  "keywords": [
+    "bk-vision",
+    "可视化平台"
+  ],
+  "engines": {
+    "node": "^v14.19.0",
+    "npm": "^6.14.16"
+  },
+  "main": "dist/main.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "test": "node ./packages/cli/bin/index.js chart:create test-chart",
+    "dev": "webpack5-cli-service dev",
+    "dev:sdk": "cross-env version=sdk-preview webpack5-cli-service dev",
+    "build": "webpack5-cli-service build",
+    "build:analyzer": "cross-env version=analyzer webpack5-cli-service build",
+    "build:open": "cross-env version=open webpack5-cli-service build",
+    "build:vue": "cross-env version=sdk-dashboard-vue webpack5-cli-service build",
+    "build:app": "cross-env version=sdk-dashboard-app webpack5-cli-service build",
+    "lint": "eslint --fix --ext .vue src",
+    "lint:style": "stylelint --fix ./**/*.{css,vue} --custom-syntax",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "*.css": "stylelint",
+    "*.less": "stylelint --fix --syntax=less",
+    "*.{js,ts,tsx,vue}": [
+      "eslint --fix",
+      "git add ."
+    ]
+  },
+  "directories": {
+    "docs": "/docs/",
+    "src": "/src/"
+  },
+  "devDependencies": {
+    "@blueking/babel-preset-bk": "^2.0.0",
+    "@blueking/eslint-config-bk": "^2.0.0",
+    "@blueking/stylelint-config-bk": "^2.0.0",
+    "@vue/babel-helper-vue-jsx-merge-props": "^1.2.1",
+    "@vue/babel-preset-jsx": "^1.2.4",
+    "@vue/composition-api": "^1.4.3",
+    "@wangeditor/editor": "^5.0.1",
+    "@wangeditor/editor-for-vue": "^1.0.1",
+    "babel-plugin-import-bk-magic-vue": "^2.0.14",
+    "babel-plugin-module-resolver": "^4.1.0",
+    "bk-vision-cli": "^2.1.1",
+    "cross-env": "^7.0.3",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.4.1",
+    "monaco-editor": "^0.32.1",
+    "monaco-editor-webpack-plugin": "^7.0.1",
+    "postcss": "^8.4.12",
+    "postcss-loader": "^5.3.0",
+    "sass": "^1.48.0",
+    "sass-loader": "^10.0.3",
+    "ts-loader": "^9.3.0",
+    "typescript": "4.4.4"
+  },
+  "peerDependencies": {
+    "echarts": "^5.3.2",
+    "vue": "^2.6.12"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "bk-magic-vue": "^2.4.7",
+    "classnames": "^2.3.1",
+    "deepmerge": "^4.2.2",
+    "dayjs": "^1.10.7",
+    "echarts": "^5.3.2",
+    "helpful-decorators": "^2.1.0",
+    "html-to-image": "^1.9.0",
+    "js-cookie": "^3.0.1",
+    "resize-detector": "^0.3.0",
+    "systemjs": "^0.20.19",
+    "vue": "^2.6.12",
+    "vue-class-component": "^7.2.6",
+    "vue-grid-layout": "^2.3.12",
+    "vue-i18n": "^8.26.8",
+    "vue-property-decorator": "^9.1.2",
+    "vue-router": "^3.2.0",
+    "vue-tsx-support": "^3.2.0",
+    "vuex": "^3.6.2",
+    "vuex-class": "^0.3.2",
+    "vuex-module-decorators": "^1.2.0"
+  },
+  "license": "MIT"
+}
