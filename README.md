@@ -61,7 +61,14 @@ import '@tencent/bk-vision-app'
 import '@tencent/bk-vision-app/dist/main.css'
 window.BkVisionSDK.init('#app', '3asJvRctYHb8YMAEpdQz6W');
 ```
-
+#### tnpm无法安装，可以使用git引用
+```json
+{
+  "dependencies": {
+    "@tencent/bk-vision-app": "git+https://git.woa.com/bkvision/bk-vision-app",
+  }
+}
+```
 ## init 函数参数
 ```typescript
 export  function init(
