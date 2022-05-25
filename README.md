@@ -11,38 +11,43 @@ bk-vision 分别支持vue 组件迁入与 纯js引入
 ## bk-vision-app
 纯js-sdk使用。如果vue项目,推荐使用[bk-vision-vue](https://git.woa.com/bkvision/bk-vision-vue
 
-### 在项目中使用（[暂未发布，请参考内部版@tencent/bk-vision-app](#内部版使用))
-```javascript
-import 'bk-vision-app'
-import 'bk-vision-app/dist/main.css'
-window.BkVisionSDK.init('#app', '3asJvRctYHb8YMAEpdQz6W',{apiPrefix:''});
-```
+
 ### 在html文件中引入
 ```html
   <link rel='stylesheet' href='https://staticfile.qq.com/bkvision/p0964a9106c32428b99e3260d0fc63088/latest/main.css'>
   <script src='https://staticfile.qq.com/bkvision/p0964a9106c32428b99e3260d0fc63088/latest/main.js'/>
+  <div id='bkVision' style='width: 100%;height: 500px;'></div>   
   <script>
-    window.BkVisionSDK.init('#app', '3asJvRctYHb8YMAEpdQz6W', {apiPrefix:''});
+    window.BkVisionSDK.init('#bkVision', '3asJvRctYHb8YMAEpdQz6W', {apiPrefix:''});
   </script>
+```
+### 在项目中使用（[暂未发布，请参考内部版@tencent/bk-vision-app](#内部版使用))
+```javascript
+import 'bk-vision-app'
+import 'bk-vision-app/dist/main.css'
+window.BkVisionSDK.init('#bkVision', '3asJvRctYHb8YMAEpdQz6W',{apiPrefix:''});
 ```
 ### 在vue项目中使用
 ```vue
 <template>
- <div>
-   <div id='dashboard' class="home" style='flex:1;'/>
- </div>
+  <div style='width: 100%;height:500px;'>
+    <div id='dashboard' class="home" style='flex:1;'/>
+  </div>
 </template>
 
 <script>
-import 'bk-vision-app'
-import 'bk-vision-app/dist/main.css'
+import '@tencent/bk-vision-app'
+import '@tencent/bk-vision-app/dist/main.css'
 export default {
   name: 'Sdk',
   mounted() {
-    window.BkVisionSDK.init('#dashboard', '3asJvRctYHb8YMAEpdQz6W',{apiPrefix:''});
+    window.BkVisionSDK.init('#dashboard', 'TKWQ7s8Uoi2MzY5X6QZkim', {
+      apiPrefix: '/bkvision/'
+    });
   }
 };
 </script>
+
 
 ```
 ### 内部版使用
@@ -72,9 +77,9 @@ window.BkVisionSDK.init('#app', '3asJvRctYHb8YMAEpdQz6W');
 ## init 函数参数
 ```typescript
 export  function init(
-  domId: string,
-  uid: string,
-  data?: {
+  domId: string, // 需要嵌入的元素的dom id
+  uid: string,// 分享uid
+  data?: {// 分享面板控制参数
     filter: object,
     isShowTools: boolean,
     isShowWaterMark: boolean,
