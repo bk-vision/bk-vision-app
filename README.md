@@ -19,8 +19,8 @@ window.BkVisionSDK.init('#app', '3asJvRctYHb8YMAEpdQz6W',{apiPrefix:''});
 ```
 ### 在html文件中引入
 ```html
-<link rel='stylesheet' href='bk-vision-app/dist/main.css'>
-  <script src='bk-vision-app/dist/main.js'/>
+  <link rel='stylesheet' href='https://staticfile.qq.com/bkvision/p0964a9106c32428b99e3260d0fc63088/latest/main.css'>
+  <script src='https://staticfile.qq.com/bkvision/p0964a9106c32428b99e3260d0fc63088/latest/main.js'/>
   <script>
     window.BkVisionSDK.init('#app', '3asJvRctYHb8YMAEpdQz6W', {apiPrefix:''});
   </script>
