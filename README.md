@@ -261,3 +261,34 @@ export const SHORTCUTS = [
 
 ---
 
+## bk-vision水印设置
+bk-vision 将合并**waterMark**合并属性
+```javascript
+{
+  mounted() {
+    if (this.waterMark?.content) {
+      const  marker = watermarker.init(this.$refs.waterMarkRef);
+      marker.setOption(Object.assign({
+        textStyle: {
+          left: 20,
+          top: 100,
+          rotate: -10,
+          align: 'left',
+          fontSize: 16,
+          lineHeight: 25,
+          color: '#efefef',
+          alpha: 1,
+        },
+        imageStyle: {
+          width: 400,
+          height: 300,
+          position: 'right top',
+          repeat: 'repeat',
+        },
+        zIndex: 999999999,
+      }, this.waterMark));
+    }
+  }
+}
+```
+
