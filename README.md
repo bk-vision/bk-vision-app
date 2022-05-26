@@ -29,8 +29,8 @@ bk-vision 分别支持vue 组件迁入与 纯js引入
 
 ### 在html文件中引入
 ```html
-  <link rel='stylesheet' href='https://staticfile.qq.com/bkvision/p0964a9106c32428b99e3260d0fc63088/latest/main.css'>
-  <script src='https://staticfile.qq.com/bkvision/p0964a9106c32428b99e3260d0fc63088/latest/main.js'/>
+<link rel='stylesheet' href='https://staticfile.qq.com/bkvision/p0964a9106c32428b99e3260d0fc63088/latest/main.css'/>
+<script src='https://staticfile.qq.com/bkvision/p0964a9106c32428b99e3260d0fc63088/latest/main.js'></script>
   <div id='bkVision' style='width: 100%;height: 1000px;'></div>   
   <script>
     window.BkVisionSDK.init(
@@ -50,13 +50,45 @@ bk-vision 分别支持vue 组件迁入与 纯js引入
       });
   </script>
 ```
-### 在项目中使用（[暂未发布，请参考内部版@tencent/bk-vision-app](#内部版使用))
+### 在vue项目中使用
+```vue
+<template>
+  <div style='width: 100%;height:1000px;'>
+    <div id='dashboard' class="home" style='flex:1;'/>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'Sdk',
+  mounted() {
+    const link = document.createElement('link')
+    const script = document.createElement('script')
+    link.href = 'https://staticfile.qq.com/bkvision/p0964a9106c32428b99e3260d0fc63088/latest/main.css'
+    link.rel='stylesheet'
+    document.body.append(link)
+    script.src = 'https://staticfile.qq.com/bkvision/p0964a9106c32428b99e3260d0fc63088/latest/main.js'
+    document.body.append(script)
+    script.onload=function (){
+      window.BkVisionSDK.init('#dashboard', 'TKWQ7s8Uoi2MzY5X6QZkim', {
+        apiPrefix: 'http://stag-dot-examples-dot-bkvision.bkapps-sz.oa.com/bkvision/'
+      });
+    }
+  }
+};
+</script>
+```
+### npm包形式引用
+>> 注意事项：**@blueking/cli-service-webpack4**(老版bk-cli模板工程，无法使用npm形式。)
+推荐使用 [@blueking/cli-service-webpack5](https://www.npmjs.com/package/@blueking/cli-service-webpack5) 与vue-cli 等构建工具
+
+#### 在项目中使用（[暂未发布，请参考内部版@tencent/bk-vision-app](#内部版使用))
 ```javascript
 import 'bk-vision-app'
 import 'bk-vision-app/dist/main.css'
 window.BkVisionSDK.init('#bkVision', '3asJvRctYHb8YMAEpdQz6W',{apiPrefix:''});
 ```
-### 在vue项目中使用
+#### 在vue项目中使用
 ```vue
 <template>
   <div style='width: 100%;height:1000px;'>
