@@ -31,7 +31,7 @@ bk-vision 分别支持vue 组件迁入与 纯js引入
 ```html
   <link rel='stylesheet' href='https://staticfile.qq.com/bkvision/p0964a9106c32428b99e3260d0fc63088/latest/main.css'>
   <script src='https://staticfile.qq.com/bkvision/p0964a9106c32428b99e3260d0fc63088/latest/main.js'/>
-  <div id='bkVision' style='width: 100%;height: 500px;'></div>   
+  <div id='bkVision' style='width: 100%;height: 1000px;'></div>   
   <script>
     window.BkVisionSDK.init(
         '#bkVision', 
@@ -59,7 +59,7 @@ window.BkVisionSDK.init('#bkVision', '3asJvRctYHb8YMAEpdQz6W',{apiPrefix:''});
 ### 在vue项目中使用
 ```vue
 <template>
-  <div style='width: 100%;height:500px;'>
+  <div style='width: 100%;height:1000px;'>
     <div id='dashboard'/>
   </div>
 </template>
