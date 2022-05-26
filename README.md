@@ -258,7 +258,9 @@ export const SHORTCUTS = [
 
 ```
 ## 水印属性
+
 具体参看：https://github.com/CoderMonkie/js-watermarker
+
 ### options properties <a id="options"></a>
 
 | 属性名 Property 属性                 | 说明 Note 　説明       | 类型 Type タイプ・型 | 是否必须　 Required 　必須 | 可选值 Values 設定値 | 默认值 Default デフォルト値 |
@@ -294,6 +296,7 @@ export const SHORTCUTS = [
 ---
 
 ## bk-vision水印设置
+
 bk-vision 将合并**waterMark**合并属性
 ```javascript
 {
