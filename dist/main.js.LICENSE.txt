@@ -35,7 +35,11 @@ PERFORMANCE OF THIS SOFTWARE.
 
 /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */
 
-/*! vue-grid-layout - 2.3.12 | (c) 2015, 2021  Gustavo Santos (JBay Solutions) <gustavo.santos@jbaysolutions.com> (http://www.jbaysolutions.com) | https://github.com/jbaysolutions/vue-grid-layout */
+/*! sheetjs (C) 2013-present SheetJS -- http://sheetjs.com */
+
+/*! vue-grid-layout - 2.3.13-beta.7 | (c) 2015, 2022  Gustavo Santos (JBay Solutions) <gustavo.santos@jbaysolutions.com> (http://www.jbaysolutions.com) | https://github.com/jbaysolutions/vue-grid-layout */
+
+/*! xlsx.js (C) 2013-present SheetJS -- http://sheetjs.com */
 
 /**
   * vue-class-component v7.2.6
