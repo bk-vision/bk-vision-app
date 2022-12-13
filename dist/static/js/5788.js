@@ -1,1 +1,0 @@
-((typeof self<"u"?self:this).webpackChunkMyLibrary=(typeof self<"u"?self:this).webpackChunkMyLibrary||[]).push([[5788],{75788:function(n,u,e){e.p="".concat(window.PROJECT_CONFIG.BK_STATIC_URL,"/")}}]);
