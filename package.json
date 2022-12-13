@@ -11,7 +11,7 @@
     "node": "^v16.15.0",
     "npm": "^8.5.5"
   },
-  "main": "dist/main.js",
+  "main": "dist/static/js/index",
   "files": [
     "dist"
   ],
