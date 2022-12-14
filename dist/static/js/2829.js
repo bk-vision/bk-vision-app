@@ -1,1 +1,0 @@
-"use strict";((typeof self<"u"?self:this).webpackChunkMyLibrary=(typeof self<"u"?self:this).webpackChunkMyLibrary||[]).push([[2829],{72829:function(u,e){Object.defineProperty(e,"__esModule",{value:!0})}}]);
